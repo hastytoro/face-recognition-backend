@@ -49,5 +49,6 @@ app.post('/register', (req, res) => registerHandler(req, res, db, bcrypt));
 app.get('/profile/:id', (req, res) => profileHandler(req, res, db));
 app.put('/image', (req, res) => imageHandler(req, res, db));
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`express server is running on ${PORT}`));
+app.listen(process.env.PORT || 3000, () =>
+  console.log(`express server is running on ${process.env.PORT}`),
+);
