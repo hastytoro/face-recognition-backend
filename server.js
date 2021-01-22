@@ -43,12 +43,11 @@ const postmanQuery = {
 };
 
 // express routes:
-app.get('/', res => res.send(postmanQuery));
+app.get('/', (req, res) => console.log(postmanQuery));
 app.post('/signin', (req, res) => signinHandler(req, res, db, bcrypt));
 app.post('/register', (req, res) => registerHandler(req, res, db, bcrypt));
 app.get('/profile/:id', (req, res) => profileHandler(req, res, db));
 app.put('/image', (req, res) => imageHandler(req, res, db));
 
-app.listen(process.env.PORT || 3000, () =>
-  console.log(`express server is running on ${process.env.PORT}`),
-);
+const PORT = process.env.PORT;
+app.listen(PORT || 3000, () => console.log(`app is running on port ${PORT}`));
