@@ -9,11 +9,6 @@ const signinHandler = require('./routes/signin');
 const profileHandler = require('./routes/profile');
 const imageHandler = require('./routes/image');
 
-// express configuration:
-const app = express();
-app.use(express.json());
-app.use(cors());
-
 // database configuration:
 const db = knex({
   client: 'pg',
@@ -24,6 +19,11 @@ const db = knex({
     },
   },
 });
+
+// express configuration:
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 // sample query:
 const postmanQuery = {
